@@ -56,13 +56,6 @@ export default function HotelCard({ hotel }) {
 
   // Price converted
   const convertedPrice = Number(basePrice * conversionRate).toFixed(2);
-  console.log("Conversion details:", {
-    basePrice,
-    baseCurrency,
-    userCurrency,
-    conversionRate,
-    convertedPrice,
-  });
 
   const hotelImage =
     hotel?.hotelImages?.[0] ||

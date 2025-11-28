@@ -140,8 +140,6 @@ const Offers = () => {
           </p>
         </div>
 
-      
-
         {/* Security Service Offers Section */}
         <section className="mb-16">
           <div className="flex justify-between items-center mb-6">

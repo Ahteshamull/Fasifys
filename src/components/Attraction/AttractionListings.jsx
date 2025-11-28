@@ -8,16 +8,16 @@ export default function AttractionListings() {
   const navigate = useNavigate();
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [selectedAttraction, setSelectedAttraction] = useState(null);
-  
+
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
   const [search, setSearch] = useState("");
-  
+
   const { data, isLoading } = useGetAllActiveAttractionListingsQuery({
     page,
     limit: pageSize,
   });
-  
+
   const attractions = data?.data?.data || [];
   console.log("data,", attractions);
   const meta = data?.data?.meta || {};

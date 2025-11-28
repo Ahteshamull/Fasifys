@@ -27,7 +27,7 @@ export default function HotelBookings() {
   const handleCancel = async (booking) => {
     // console.log("booking:", booking);
     try {
-      const provider = booking?.payment?.[0]?.provider; 
+      const provider = booking?.payment?.[0]?.provider;
 
       const bookingId = booking?.id;
       console.log("provider:", provider);
@@ -41,7 +41,6 @@ export default function HotelBookings() {
       console.log(e);
     }
   };
-
 
   console.log("hotelBooking:", hotelBooking);
 

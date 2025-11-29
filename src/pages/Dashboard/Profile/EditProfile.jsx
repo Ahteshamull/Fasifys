@@ -31,9 +31,7 @@ export default function EditProfile() {
       Swal.fire({
         icon: "warning",
         title: "Missing required fields",
-        html: `Please fill the following field(s): <br/><strong>${missing.join(
-          ", "
-        )}</strong>`,
+        html: `Please fill the following field(s): <br/><strong>${missing.join(", ")}</strong>`,
       });
       return;
     }

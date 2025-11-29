@@ -9,6 +9,7 @@ import {
 } from "../../redux/api/security/securityApi";
 import SecurityDetailsModal from "./SecurityDetailsModal";
 
+
 export default function AvailableSecurity() {
   const [isViewModalOpen, setIsViewModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
@@ -56,9 +57,7 @@ export default function AvailableSecurity() {
       key: "image",
       render: (_, record) => (
         <img
-          src={
-            record.securityImages?.[0] || "https://via.placeholder.com/80x60"
-          }
+          src={record.securityImages?.[0] || "https://via.placeholder.com/80x60"}
           alt="Security"
           className="w-20 h-12 object-cover rounded-md"
         />
@@ -93,9 +92,7 @@ export default function AvailableSecurity() {
       title: "Status",
       key: "status",
       render: (_, r) => (
-        <Tag color={r.isBooked === "AVAILABLE" ? "green" : "red"}>
-          {r.isBooked}
-        </Tag>
+        <Tag color={r.isBooked === "AVAILABLE" ? "green" : "red"}>{r.isBooked}</Tag>
       ),
     },
     {

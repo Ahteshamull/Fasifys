@@ -100,6 +100,7 @@ export default function PaymentConfirm() {
   const bookingPayload = location.state?.bookingData;
   const hotelData = bookingDetails?.data || bookingDetails || {};
 
+<<<<<<< HEAD
   // Get currency with proper fallbacks
   const displayCurrency =
     hotelData.displayCurrency ||
@@ -109,6 +110,8 @@ export default function PaymentConfirm() {
     hotelData.currency ||
     "USD";
 
+=======
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
   // Payment mutations
   const [createPaystackSession] =
     useCreateHotelPaystackCheckoutSessionMutation();
@@ -132,6 +135,7 @@ export default function PaymentConfirm() {
       return null;
     }
 
+<<<<<<< HEAD
     // Debug logging to understand the data structure
     console.log("BookingPayload:", bookingPayload);
     console.log("RoomId:", bookingPayload.roomId);
@@ -146,6 +150,8 @@ export default function PaymentConfirm() {
       return null;
     }
 
+=======
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
     setIsCreatingBooking(true);
     try {
       const res = await createHotelBooking({
@@ -164,6 +170,10 @@ export default function PaymentConfirm() {
 
       // Debug logging to see the actual error structure
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
       // Enhanced duplicate booking detection
       const isDuplicateBooking =
         msg.toLowerCase().includes("already") ||
@@ -246,11 +256,37 @@ export default function PaymentConfirm() {
       return;
     }
 
+<<<<<<< HEAD
     // Proceed directly to payment without modal
     proceedToPayment(currentBookingId);
   };
 
   const proceedToPayment = async (currentBookingId) => {
+=======
+    // Show booking confirmation modal and auto-proceed after 3 seconds
+    setShowBookingModal(true);
+    setCountdown(3);
+
+    // Clear any existing timer
+    if (modalTimer) clearTimeout(modalTimer);
+
+    // Set timer to auto-proceed to payment after 3 seconds
+    let secondsLeft = 3;
+    const countdownInterval = setInterval(() => {
+      secondsLeft--;
+      setCountdown(secondsLeft);
+      if (secondsLeft <= 0) {
+        clearInterval(countdownInterval);
+        setShowBookingModal(false);
+        proceedToPayment();
+      }
+    }, 1000);
+
+    setModalTimer(countdownInterval);
+  };
+
+  const proceedToPayment = async () => {
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
     if (!bookingDetails?.user?.country) {
       toast.error("Please select a country");
       return;
@@ -259,6 +295,10 @@ export default function PaymentConfirm() {
     setIsLoading(true);
 
     try {
+<<<<<<< HEAD
+=======
+      const currentBookingId = createdBookingId;
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
       const successUrl = `${window.location.origin}/booking-confirmation`;
       const cancelUrl = `${window.location.origin}/hotel/checkout`;
 

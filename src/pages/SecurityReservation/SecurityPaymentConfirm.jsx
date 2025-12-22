@@ -101,16 +101,31 @@ export default function PaymentConfirm() {
   const cancelationPolicy = data?.cancellationPolicy;
   const raw = location.state;
   const totalPrice = raw?.data?.bookingPayload;
+<<<<<<< HEAD
 
   // The data structure is: { bookingData: bookingPayload, data: paymentData }
   // paymentData contains: { bookingPayload, data: bookingDetails, user: updatedUser, ... }
   const paymentData = raw?.data || {};
   const bookingPayloadForCreation = raw?.bookingData || {};
+=======
+ 
+  // The data structure is: { bookingData: bookingPayload, data: paymentData }
+  // paymentData contains: { bookingPayload, data: bookingDetails, user: updatedUser, ... }
+  const paymentData = raw?.data || {};
+  const bookingPayloadForCreation = raw?.bookingData || {};
+
+
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
 
   // Get the actual booking details from paymentData.data
   const bookingDetails = paymentData?.data || {};
   const userInfo = paymentData?.user || bookingDetails?.user || {};
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
   // Add fallback data to ensure something displays
   const displayData = {
     securityName:
@@ -170,6 +185,11 @@ export default function PaymentConfirm() {
       bookingDetails?.user?.country ||
       bookingDetails?.address;
 
+<<<<<<< HEAD
+=======
+ 
+
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
     if (countrySrc) {
       const country = String(countrySrc).toLowerCase();
       const isUserInAfrica = isAfricanCountry(country);
@@ -216,6 +236,7 @@ export default function PaymentConfirm() {
       return null;
     }
 
+<<<<<<< HEAD
     // Debug logging to see what's being passed
     console.log("=== Security Booking Debug ===");
     console.log("actualBookingPayload:", actualBookingPayload);
@@ -245,6 +266,12 @@ export default function PaymentConfirm() {
     try {
       const res = await createSecurityBooking({
         id: idToUse,
+=======
+    setIsCreatingBooking(true);
+    try {
+      const res = await createSecurityBooking({
+        id: actualBookingPayload.guardId,
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
         body: actualBookingPayload,
       }).unwrap();
 
@@ -257,7 +284,11 @@ export default function PaymentConfirm() {
       const msg =
         err?.data?.message || err?.message || "Failed to create booking";
 
+<<<<<<< HEAD
       // Debug logging to see the actual error structure
+=======
+        // Debug logging to see the actual error structure
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
 
       // Enhanced duplicate booking detection
       const isDuplicateBooking =
@@ -364,6 +395,11 @@ export default function PaymentConfirm() {
       return;
     }
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
     // Show booking confirmation modal and auto-proceed after 3 seconds
     setShowBookingModal(true);
     setCountdown(3);
@@ -395,6 +431,11 @@ export default function PaymentConfirm() {
       bookingDetails?.user?.country ||
       bookingDetails?.address;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
     if (!countrySrc) {
       toast.error("Please provide country/address for payment method");
       return;
@@ -411,6 +452,11 @@ export default function PaymentConfirm() {
       return;
     }
 
+<<<<<<< HEAD
+=======
+   
+
+>>>>>>> 8699076b3c97df1f935f70c03b6d50af5e66df32
     setIsLoading(true);
     try {
       const successUrl = `${window.location.origin}/booking-confirmation`;
